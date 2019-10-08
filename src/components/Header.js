@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
 
-export default class Header extends Component {
-	render() {
-		return (
-			
-				<Navbar bg="dark" variant="dark">
-					<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-					<Nav className="mr-auto">
-						<Nav.Link href="#login">Home</Nav.Link>
-						<Nav.Link href="#features">Features</Nav.Link>
-						<Nav.Link href="#pricing">Pricing</Nav.Link>
-					</Nav>
-				</Navbar>
-			
-		);
-	};
-}
+export default function Header() {
+	return(
+		<div>
+			<header class="header">
+				<div class="container">
+					<div class="header__inner">
+						<div class="header___logo">Logo</div>
+						<nav class="nav">
+								<a class="nav__link" href="/home/">HOME</a>
+								<a class="nav__link" href="/services/">SERVICES</a>
+								<a class="nav__link" href="/partners/">PARTNERS</a>
+								<a class="nav__link" href="/customers/">CUSTOMERS</a>
+								<a class="nav__link" href="/careers/">CAREERS</a>
+								<a class="nav__link" href="/contact/">CONTACT</a>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+	);
+};
