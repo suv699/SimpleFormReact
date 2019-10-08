@@ -1,14 +1,12 @@
 import React from 'react';
 
-import 'bootstrap/dist/css/bootstrap.css'; 
-//import 'bootstrap/dist/css/bootstrap-theme.css';
-
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Welcome from './components/Welcome';
 import Header from './components/Header';
+import Content from './components/Content';
 
 
 
@@ -29,11 +27,10 @@ class App extends React.Component {
 		return (
 			<div>
 				<Header />
-
+				<Content />
 			</div>
 		);
 	}
-	
 }
 
 				/*

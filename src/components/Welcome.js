@@ -9,14 +9,14 @@ class Welcome extends Component {
     render() {
         return (
 			<div>
-				<Header />
 				<h1>Welcome</h1>
-				<Clock />
 			</div>
         );
     }
 }
 /*
+<Clock />
+
 render((
     <Router>
         <Route path="/" component={App}>

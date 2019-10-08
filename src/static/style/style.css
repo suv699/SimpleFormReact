@@ -6,7 +6,7 @@ body {
 	line-height: 1.6;
 }
 
-*, *::after, *::before {
+*, *:after, *:before {
 	box-sizing: border-box;
 }
 
@@ -17,9 +17,10 @@ h1, h2, h3, h4, h5, h6 {
 .container {
 	width: 100%;
 	max-width: 1200px;
-	margin: 0;
+	margin: 0 auto;
 }
 
+/*Menu*/
 .header {
 	width: 100%;
 	position: absolute;
@@ -36,10 +37,10 @@ h1, h2, h3, h4, h5, h6 {
 	align-items: center;
 }
 
-.header___logo {
+.header__logo {
 	font-size: 30px;
 	font-weight: 700;
-	color: rgb(44, 230, 16);
+	color: #fff;
 }
 
 .nav {
@@ -51,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: inline-block;
 	vertical-align: top;
 	margin: 0 10px;
-	color: rgb(44, 230, 16);
+	color:#fff;
 	text-decoration: none;
 
 	transition: color .1s linear;
@@ -59,4 +60,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav__link:hover {
 	color: #fce38a;
+}
+
+/*Content*/
+.simplepage {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	width: 100%;
+	height: 100vh;
+	
+	background: url("../img/bgf.jpg") center no-repeat;
+	background-size: cover;
+}
+
+.simplepage__inner {
+	width: 100px;
+	min-width: 880px;
+	margin: 0 auto;
+}
+
+.simplepage__title {
+	font-size: 150px;
+	font-weight: 700;
+
+	text-transform: uppercase;
+	text-align: center;
+	color:#fff;
 }
