@@ -8,8 +8,9 @@ import Header from './Header';
 class Welcome extends Component {
     render() {
         return (
-			<div>
+			<div className="welcome">
 				<h1>Welcome</h1>
+				<Clock />
 			</div>
         );
     }

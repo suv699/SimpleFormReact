@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 	return(
 		<div>
-			<header class="header">
-				<div class="container">
-					<div class="header__inner">
-						<div class="header__logo">Logo</div>
-						<nav class="nav">
-								<a class="nav__link" href="/home/">HOME</a>
-								<a class="nav__link" href="/services/">About</a>
-								<a class="nav__link" href="/partners/">PARTNERS</a>
-								<a class="nav__link" href="/contact/">CONTACT</a>
-								<a class="nav__link" href="/login/">LOGIN/LOGOUT</a>
+			<header className="header">
+				<div className="container">
+					<div className="header__inner">
+						<div className="header__logo">Logo</div>
+						<nav className="nav">
+								<Link className="nav__link" to='/'>HOME</Link>
+								<Link className="nav__link" to="/about">About</Link>
+								<Link className="nav__link" to="/partners">PARTNERS</Link>
+								<Link className="nav__link" to="/contact">CONTACT</Link>
+								<Link className="nav__link" to="/login">LOGIN/LOGOUT</Link>
 						</nav>
 					</div>
 				</div>

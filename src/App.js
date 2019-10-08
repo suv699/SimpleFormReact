@@ -26,8 +26,15 @@ class App extends React.Component {
 	render () {
 		return (
 			<div>
-				<Header />
-				<Content />
+				<Router>
+					<Header />
+					<Content>
+						<Switch>
+							<Route exact path="/" component={Welcome} />
+							<Route path="/login" component={LoginForm} />
+						</Switch>
+					</Content>
+				</Router>
 			</div>
 		);
 	}
