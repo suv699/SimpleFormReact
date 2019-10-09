@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, Link, Redirect } from 'react-router-dom';
 
 import InputComponent from './InputComponent';
 import LabelComponent from './LabelComponent';
@@ -78,11 +78,19 @@ export default class LoginForm extends Component {
 		console.log('After fetch!');
 	};
 
+	goToReg = () => {
+		console.log('redirect - ');
+		//return <Redirect to="/registration"/>;
+		this.props.history.push('/registration')
+	};
+
 	render () {
 		return (
 			<div className="LoginForm">
 				<form onSubmit={this.onSubmit}>
-					<LabelComponent text="Login"/>
+					<div className="label_title">
+						<span className="label_span">Login</span>
+					</div>
 					<div>
 						<InputComponent 
 							type="name"
@@ -100,7 +108,14 @@ export default class LoginForm extends Component {
 							onChange={this.onChange}
 						/>
 					</div>
-					<input type="submit" value="Вход"/>
+					<div className="login_btn">
+						<div>
+							<input type="submit" value="Вход"/>
+						</div>
+						<div className="login_link">
+							<input type="button" onClick={this.goToReg} value="Registration"/>
+						</div>
+					</div>
 				</form>
 			</div>
 		);

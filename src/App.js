@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import Welcome from './components/Welcome';
 import Header from './components/Header';
 import Content from './components/Content';
+import About from './components/About';
+import CustomRouter from './components/CustomRouter';
 
 
 
@@ -14,7 +16,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			flag: true
+			user: false
 		}
 	}
 	onChange = () => {
@@ -32,6 +34,9 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path="/" component={Welcome} />
 							<Route path="/login" component={LoginForm} />
+							<CustomRouter path="/about" user={this.state.user} component={About} />
+							<CustomRouter path="/contact" user={this.state.user} component={About} />
+							<Route path="/registration" component={RegistrationForm} />
 						</Switch>
 					</Content>
 				</Router>
