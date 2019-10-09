@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Redirect } from 'react-router-dom';
 
 import InputComponent from './InputComponent';
 import LabelComponent from './LabelComponent';
@@ -30,8 +29,7 @@ export default class LoginForm extends Component {
 
 		this.setState({
 			[name]: value
-		});
-		
+		});		
 	};
 	onSubmit = (e) => {
 		e.preventDefault();
@@ -40,12 +38,14 @@ export default class LoginForm extends Component {
 			return;
 		}
 		if (this.state.login && this.state.password) {
-			alert(`Добро пожаловать, ${this.state.login} !`);
+			//alert(`Добро пожаловать, ${this.state.login} !`);
+			//this.props.history.push('/about');
+			console.log(JSON.stringify(this.props));
 		} else {
 			alert('Введите логин пароль!');
 		}
 
-		//this.props.onLogin();
+		this.props.onLogin();
 		
 	}
 
@@ -81,7 +81,7 @@ export default class LoginForm extends Component {
 	goToReg = () => {
 		console.log('redirect - ');
 		//return <Redirect to="/registration"/>;
-		this.props.history.push('/registration')
+		//this.props.history.push('/registration');
 	};
 
 	render () {
