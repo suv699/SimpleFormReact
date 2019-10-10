@@ -25,7 +25,7 @@ export default class InputComponent extends Component {
 				<input 
 					type={type}
 					name={name}		
-					placeholder={name + ' here...'}
+					placeholder={name}
 					value={this.state.value}
 					onChange={this.onChange}
 				/>

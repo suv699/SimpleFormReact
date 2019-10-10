@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({user}) {
 	return(
 		<div>
 			<header className="header">
@@ -12,7 +12,7 @@ export default function Header() {
 								<Link className="nav__link" to='/'>HOME</Link>
 								<Link className="nav__link" to="/about">About</Link>
 								<Link className="nav__link" to="/contact">CONTACT</Link>
-								<Link className="nav__link" to="/login">LOGIN/LOGOUT</Link>
+								<Link className="nav__link" to={user ? '/logout' : '/login'}>{user ? 'LOGOUT' : 'LOGIN'}</Link>								
 						</nav>
 					</div>
 				</div>

@@ -38,15 +38,14 @@ export default class LoginForm extends Component {
 			return;
 		}
 		if (this.state.login && this.state.password) {
-			//alert(`Добро пожаловать, ${this.state.login} !`);
+			alert(`Добро пожаловать, ${this.state.login} !`);
 			//this.props.history.push('/about');
 			console.log(JSON.stringify(this.props));
 		} else {
 			alert('Введите логин пароль!');
 		}
 
-		this.props.onLogin();
-		
+		this.props.onLogin();	
 	}
 
 	componentDidMount() {
