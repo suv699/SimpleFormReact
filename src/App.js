@@ -9,6 +9,8 @@ import Content from './components/Content';
 import About from './components/About';
 import CustomRouter from './components/CustomRouter';
 import Logout from './components/Logout';
+import NotFound from './components/NotFound';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -28,6 +30,11 @@ class App extends React.Component {
 			user: false
 		}, this.props.history.push('/'));
 	};
+	/*
+	onRegistration = () => {
+		this.props.history.push('/registration');
+	};
+	*/
 	render () {
 		return (
 			<div>
@@ -36,16 +43,19 @@ class App extends React.Component {
 					<Switch>
 						<Route exact path="/" component={Welcome} />
 						<Route path="/login" render={
-							(props) => (<LoginForm onLogin={this.onLogin}/>)
+							(props) => (<LoginForm onLogin={this.onLogin} {...props}/>)
 							} />
 
 						<Route path="/logout" 
-							render={() => (<Logout onLogout={this.onLogout} />)} 
+							render={(props) => (<Logout onLogout={this.onLogout} />)} 
 						/>
 
 						<CustomRouter path="/about" user={this.state.user} component={About} />
 						<CustomRouter path="/contact" user={this.state.user} component={About} />
-						<Route path="/registration" component={RegistrationForm} />
+						<Route path="/registration" 
+							render={(props)=>(<RegistrationForm {...props}/>)}
+						/>
+						<Route component={NotFound}/>
 					</Switch>
 				</Content>
 			</div>

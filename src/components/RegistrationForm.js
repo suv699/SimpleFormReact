@@ -44,6 +44,7 @@ export default class RegistrationForm extends Component {
 	onSendLogin = (e) => {
 		//fetch();
 		console.log('send');
+		this.props.history.push('/');
 	}
 
 	componentDidMount() {

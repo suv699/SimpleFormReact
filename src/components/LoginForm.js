@@ -14,7 +14,7 @@ function checkUser(userList, login) {
 export default class LoginForm extends Component {
 	constructor(props) {
 		super(props);
-
+		console.log('con - ' + JSON.stringify(props));
 		this.onChange = this.onChange.bind(this);
 	};
 
@@ -78,9 +78,9 @@ export default class LoginForm extends Component {
 	};
 
 	goToReg = () => {
-		console.log('redirect - ');
+		console.log('redirect - ' + JSON.stringify(this.props)) ;
 		//return <Redirect to="/registration"/>;
-		//this.props.history.push('/registration');
+		this.props.history.push('/registration');
 	};
 
 	render () {
