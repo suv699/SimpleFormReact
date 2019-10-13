@@ -8,8 +8,7 @@ export default class Contact extends Component {
 
 	render() {
 		const {name, login, website, phone, company, address} = this.props.userData;
-
-		console.log('props --- ' + JSON.stringify(this.props));
+		
 		return (
 			<div className="contact">
 				<h1>User Card</h1>

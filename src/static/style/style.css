@@ -215,7 +215,7 @@ input[type=submit] {
 	color: rgba(194, 73, 73, 1)
 }
 
-.contact {
+.contact, .about {
 	background-color: #fff;
 }
 
