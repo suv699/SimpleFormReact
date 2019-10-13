@@ -11,6 +11,7 @@ import CustomRouter from './components/CustomRouter';
 import Logout from './components/Logout';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
+import ContactList from './components/ContactList';
 
 class App extends React.Component {
 	constructor(props) {
@@ -54,6 +55,7 @@ class App extends React.Component {
 
 						<CustomRouter path="/about" user={this.state.user} component={About} />
 						<CustomRouter path="/contact" user={this.state.user} userData={this.state.userData} component={Contact} />
+						<CustomRouter path="/allcontact" user={this.state.user} component={ContactList} />
 						<Route path="/registration" 
 							render={(props)=>(<RegistrationForm {...props}/>)}
 						/>

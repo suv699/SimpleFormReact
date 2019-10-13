@@ -12,6 +12,7 @@ export default function Header({user}) {
 								<NavLink activeClassName="nav__active" className="nav__link" exact to='/'>HOME</NavLink>
 								<NavLink activeClassName="nav__active" className="nav__link" to="/about">About</NavLink>
 								<NavLink activeClassName="nav__active" className="nav__link" to="/contact">CONTACT</NavLink>
+								<NavLink activeClassName="nav__active" className="nav__link" to="/allcontact">all CONTACT</NavLink>
 								<NavLink activeClassName="nav__active" className="nav__link" to={user ? '/logout' : '/login'}>{user ? 'LOGOUT' : 'LOGIN'}</NavLink>								
 						</nav>
 					</div>
