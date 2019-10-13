@@ -53,7 +53,7 @@ class App extends React.Component {
 						/>
 
 						<CustomRouter path="/about" user={this.state.user} component={About} />
-						<CustomRouter path="/contact" user={true} userData={this.state.userData} component={Contact} />
+						<CustomRouter path="/contact" user={this.state.user} userData={this.state.userData} component={Contact} />
 						<Route path="/registration" 
 							render={(props)=>(<RegistrationForm {...props}/>)}
 						/>
