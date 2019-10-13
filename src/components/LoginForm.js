@@ -69,14 +69,14 @@ export default class LoginForm extends Component {
 					
 					setTimeout(() => {
 						this.showError('Неверный логин пароль!');
-					}, 2000);
+					}, 500);
 
 					return;
 				} else {
 					setTimeout(() => {
 						this.props.onLogin(checkUserData);
 						this.props.history.push('/about');	
-					}, 2000);
+					}, 500);
 				}
 			});
  
