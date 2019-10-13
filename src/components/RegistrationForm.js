@@ -32,11 +32,9 @@ export default class RegistrationForm extends Component {
 		});
 
 		if (e.target.name === 'New Login') {
-			checkUnquieLogin(this.state.users, e.target.value) ? this.setState({
-				isError: true
-			}) : this.setState({
-				isError: false
-			});
+			this.setState({
+				isError: checkUnquieLogin(this.state.users, e.target.value)
+			})
 
 		}
 	};
@@ -44,7 +42,7 @@ export default class RegistrationForm extends Component {
 	onSendLogin = (e) => {
 		//fetch();
 		console.log('send');
-		this.props.history.push('/');
+		this.props.history.push('/login');
 	}
 
 	componentDidMount() {
@@ -64,7 +62,7 @@ export default class RegistrationForm extends Component {
 			
 			<div className="Form">
 				<div className="label_title">
-					<span className="label_span">Заполните форму</span>
+					<span className="label_span">Регистрация</span>
 				</div>
 				{/* <LabelComponent text="New login"/> */}
 				<InputComponent 

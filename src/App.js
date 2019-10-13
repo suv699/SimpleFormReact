@@ -11,7 +11,6 @@ import CustomRouter from './components/CustomRouter';
 import Logout from './components/Logout';
 import NotFound from './components/NotFound';
 
-
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -20,21 +19,16 @@ class App extends React.Component {
 		}
 	}
 	onLogin = () => {
-		console.log('--> ' + this.state.flag)
 		this.setState({
-			user: !this.state.user
-		}, this.props.history.push('/about'));
+			user: true
+		});
 	}
 	onLogout = () => {
 		this.setState({
 			user: false
 		}, this.props.history.push('/'));
 	};
-	/*
-	onRegistration = () => {
-		this.props.history.push('/registration');
-	};
-	*/
+
 	render () {
 		return (
 			<div>

@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 import InputComponent from './InputComponent';
 import LabelComponent from './LabelComponent';
 
-function checkUser(userList, login) {
+const urlUsers = 'http://www.mocky.io/v2/5da31b982f000056008a06e5';
+
+function checkUser(userList, login, password) {
+	let isFound = true;
 		for (let i = 0; i < userList.length; i++) {
-			if (userList[i].login === login) {
-				return false;
+			if (userList[i].login === login && userList[i].password === password) {
+				isFound = false;
+				break;
 			}
 		}
-		return true;
+		return isFound;
 };
 export default class LoginForm extends Component {
 	constructor(props) {
@@ -22,7 +26,8 @@ export default class LoginForm extends Component {
 		login: '',
 		password:'',
 		users: [], 
-		isError: false
+		isError: false,
+		errorMesssage: 'Заполните все поля'
 	}
 	onChange(e) {
 		const name = e.target.name;
@@ -32,45 +37,58 @@ export default class LoginForm extends Component {
 			[name]: value
 		});		
 	};
+
+	showError = (msg) => {
+		console.log('show error');
+		this.setState({
+			errorMesssage: msg,
+			isError: true
+
+		});
+	};
+
 	onSubmit = (e) => {
 		e.preventDefault();
-		if (!checkUser(this.state.users, this.state.login)) {
-			alert(`Login уже занят, введите другой!`);
-			return;
-		}
+
 		if (this.state.login && this.state.password) {
-			alert(`Добро пожаловать, ${this.state.login} !`);
-			//this.props.history.push('/about');
-			console.log(JSON.stringify(this.props));
+			//alert(`Добро пожаловать, ${this.state.login} !`);
+			let checkUserFlag = checkUser(this.state.users, this.state.login, this.state.login);			
+
+			let  newUser = {
+				username: this.state.login,
+				password: this.state.password,
+				userId: new Date().getTime()
+			};
+			
+			fetch(urlUsers, {
+				method: 'PUT',
+				body: JSON.stringify({newUser}),
+				headers: {
+					"Content-type": "application/json: charset=utf-8" 
+				}
+			}).then(respone => {
+				if (checkUserFlag) {
+					this.showError('Неверный логин пароль!');
+					return;
+				} else {
+					this.props.onLogin();
+					this.props.history.push('/about');	
+				}
+			});
+ 
 		} else {
-			alert('Введите логин пароль!');
+			this.showError('Введите логин пароль!');
 		}
 
-		setTimeout(() => {
-			this.setState({
-				isError: true
-			});
-		}, 5000);
-
-		//this.props.onLogin();	
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		isError: true
+		// 	});
+		// }, 5000);	
 	}
 
 	componentDidMount() {
-		//const urlUsers = 'https://jsonplaceholder.typicode.com/todos/1';
-		const urlUsers = 'http://www.mocky.io/v2/5d907eec3000007c00cacf3d';
 		console.log('Login form will renrering!');
-/*y
-		fetch(urlUsers, {
-			method: 'PUT',
-			body: JSON.stringify({
-				username: 'Elon Musk',
-				enail: '23213',
-				userId: 12
-			}),
-			headers: {
-				"Content-type": "application/json: charset=utf-8" 
-			}
-		});*/
 
 		fetch(urlUsers).then(function(response) {
 			console.log('---> fetch - ' + response);
@@ -86,7 +104,6 @@ export default class LoginForm extends Component {
 
 	goToReg = () => {
 		console.log('redirect - ' + JSON.stringify(this.props)) ;
-		//return <Redirect to="/registration"/>;
 		this.props.history.push('/registration');
 	};
 
@@ -95,7 +112,7 @@ export default class LoginForm extends Component {
 			<div className="Form">
 				<form onSubmit={this.onSubmit}>
 					<div className="label_title">
-						<span className="label_span">Заполните форму</span>
+						<span className="label_span">Вход</span>
 					</div>
 					<div>
 						<InputComponent 
@@ -118,11 +135,11 @@ export default class LoginForm extends Component {
 				{
 					!this.state.isError ? 
 						<LabelComponent 
-							text=""
+							text={this.state.errorMesssage}
 							className="success"/>
 						 : 
 						<LabelComponent 
-							text="*Логин занят" 
+							text={this.state.errorMesssage}
 							className="warning"
 							/>
 				}

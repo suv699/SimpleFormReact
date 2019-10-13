@@ -11,10 +11,3 @@ export default function Content(props) {
 		</div>
 	);
 };
-
-/*
-<div className="container">
-				<div className="simplepage__inner"></div>
-			</div>
-<h1 className="simplepage__title">My simple Form</h1>
-*/
