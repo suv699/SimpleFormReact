@@ -120,7 +120,6 @@ h1, h2, h3, h4, h5, h6 {
 
 form {
 	margin: 0 auto;
-	margin-top: 20px;
 }
 .label_title {
 	padding-bottom: 10px;
@@ -214,4 +213,16 @@ input[type=submit] {
 
 .warning {
 	color: rgba(194, 73, 73, 1)
+}
+
+.contact {
+	background-color: #fff;
+}
+
+.conact__mainInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	text-align: left;
+	padding-left: 10px;
 }

@@ -21,7 +21,7 @@ export default class InputComponent extends Component {
 	render() {
 		const {type, name} = this.props;
 		return (
-			<div className="has-error"> 
+			<div> 
 				<input 
 					type={type}
 					name={name}		

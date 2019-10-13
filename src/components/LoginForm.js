@@ -6,14 +6,12 @@ import LabelComponent from './LabelComponent';
 const urlUsers = 'http://www.mocky.io/v2/5da31b982f000056008a06e5';
 
 function checkUser(userList, login, password) {
-	let isFound = true;
-		for (let i = 0; i < userList.length; i++) {
-			if (userList[i].login === login && userList[i].password === password) {
-				isFound = false;
-				break;
-			}
+	for (let i = 0; i < userList.length; i++) {
+		if (userList[i].login === login && userList[i].password === password) {
+			return userList[i]
 		}
-		return isFound;
+	}
+	return false;
 };
 export default class LoginForm extends Component {
 	constructor(props) {
@@ -52,7 +50,7 @@ export default class LoginForm extends Component {
 
 		if (this.state.login && this.state.password) {
 			//alert(`Добро пожаловать, ${this.state.login} !`);
-			let checkUserFlag = checkUser(this.state.users, this.state.login, this.state.login);			
+			let checkUserData = checkUser(this.state.users, this.state.login, this.state.login);			
 
 			let  newUser = {
 				username: this.state.login,
@@ -67,24 +65,24 @@ export default class LoginForm extends Component {
 					"Content-type": "application/json: charset=utf-8" 
 				}
 			}).then(respone => {
-				if (checkUserFlag) {
-					this.showError('Неверный логин пароль!');
+				if (!checkUserData) {
+					
+					setTimeout(() => {
+						this.showError('Неверный логин пароль!');
+					}, 2000);
+
 					return;
 				} else {
-					this.props.onLogin();
-					this.props.history.push('/about');	
+					setTimeout(() => {
+						this.props.onLogin(checkUserData);
+						this.props.history.push('/about');	
+					}, 2000);
 				}
 			});
  
 		} else {
 			this.showError('Введите логин пароль!');
-		}
-
-		// setTimeout(() => {
-		// 	this.setState({
-		// 		isError: true
-		// 	});
-		// }, 5000);	
+		}	
 	}
 
 	componentDidMount() {

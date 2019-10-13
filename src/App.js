@@ -9,23 +9,29 @@ import Content from './components/Content';
 import About from './components/About';
 import CustomRouter from './components/CustomRouter';
 import Logout from './components/Logout';
+import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			user: false
+			user: false,
+			userName: 'guest',
+			userData: {}
 		}
 	}
-	onLogin = () => {
+	onLogin = (userData) => {
 		this.setState({
-			user: true
+			user: true,
+			userName: userData.username,
+			userData: userData
 		});
 	}
 	onLogout = () => {
 		this.setState({
-			user: false
+			user: false,
+			userName: 'guest'
 		}, this.props.history.push('/'));
 	};
 
@@ -35,7 +41,9 @@ class App extends React.Component {
 				<Header user={this.state.user}/>
 				<Content>
 					<Switch>
-						<Route exact path="/" component={Welcome} />
+						<Route exact path="/" render={props =>
+							<Welcome userName={this.state.userName}/>
+						} />
 						<Route path="/login" render={
 							(props) => (<LoginForm onLogin={this.onLogin} {...props}/>)
 							} />
@@ -45,7 +53,7 @@ class App extends React.Component {
 						/>
 
 						<CustomRouter path="/about" user={this.state.user} component={About} />
-						<CustomRouter path="/contact" user={this.state.user} component={About} />
+						<CustomRouter path="/contact" user={true} userData={this.state.userData} component={Contact} />
 						<Route path="/registration" 
 							render={(props)=>(<RegistrationForm {...props}/>)}
 						/>

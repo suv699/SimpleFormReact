@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-export default function CustomRouter ({ user, component: Component, ...rest}) {
+export default function CustomRouter ({ user, component: Component, userData, ...rest}) {
 	return (
 		<Route {...rest} render={
 			props => (
-				user ? <Component /> : <Redirect to="/login"/>
+				user ? <Component userData={userData} /> : <Redirect to="/login"/>
 			)
 		}/>
 	);
