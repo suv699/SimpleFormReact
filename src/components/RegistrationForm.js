@@ -62,36 +62,39 @@ export default class RegistrationForm extends Component {
 
 		return (
 			
-			<div className="RegistrationForm">
-				<LabelComponent text="New login"/>
+			<div className="Form">
+				<div className="label_title">
+					<span className="label_span">Заполните форму</span>
+				</div>
+				{/* <LabelComponent text="New login"/> */}
 				<InputComponent 
 					type="name"
 					name="New Login"
 					onChange={this.onChange}
 				/>
-				<LabelComponent text="Email"/>
+				{/* <LabelComponent text="Email"/> */}
 				<InputComponent 
 					type="name"
 					name="Email"
 					onChange={this.onChange}
 				/>
-				<button  onClick={this.onSendLogin}>
-					Send
-				</button>
+				
 				<div className="console">
 				{
 					!this.state.isError ? 
 						<LabelComponent 
-							text="Введите новый пароль и почту"
+							text="*Введите новый пароль и почту"
 							className="success"/>
 						 : 
 						<LabelComponent 
-							text="Логин занят" 
+							text="*Логин занят" 
 							className="warning"
 							/>
 				}
 				</div>
-				
+				<button  className="btn-reg-send" onClick={this.onSendLogin}>
+					Send
+				</button>
 			</div>
 			
 		);

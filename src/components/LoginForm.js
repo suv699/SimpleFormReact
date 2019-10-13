@@ -21,7 +21,8 @@ export default class LoginForm extends Component {
 	state = {
 		login: '',
 		password:'',
-		users: []
+		users: [], 
+		isError: false
 	}
 	onChange(e) {
 		const name = e.target.name;
@@ -45,7 +46,13 @@ export default class LoginForm extends Component {
 			alert('Введите логин пароль!');
 		}
 
-		this.props.onLogin();	
+		setTimeout(() => {
+			this.setState({
+				isError: true
+			});
+		}, 5000);
+
+		//this.props.onLogin();	
 	}
 
 	componentDidMount() {
@@ -85,10 +92,10 @@ export default class LoginForm extends Component {
 
 	render () {
 		return (
-			<div className="LoginForm">
+			<div className="Form">
 				<form onSubmit={this.onSubmit}>
 					<div className="label_title">
-						<span className="label_span">Login</span>
+						<span className="label_span">Заполните форму</span>
 					</div>
 					<div>
 						<InputComponent 
@@ -98,7 +105,7 @@ export default class LoginForm extends Component {
 							onChange={this.onChange}
 						/>
 					</div>
-					<LabelComponent text="Password"/>
+					{/* <LabelComponent text="Password"/> */}
 					<div>
 						<InputComponent 
 							type="password"
@@ -107,13 +114,23 @@ export default class LoginForm extends Component {
 							onChange={this.onChange}
 						/>
 					</div>
+					<div className="console">
+				{
+					!this.state.isError ? 
+						<LabelComponent 
+							text=""
+							className="success"/>
+						 : 
+						<LabelComponent 
+							text="*Логин занят" 
+							className="warning"
+							/>
+				}
+				</div>
+
 					<div className="login_btn">
-						<div>
-							<input type="submit" value="Вход"/>
-						</div>
-						<div className="login_link">
-							<input type="button" onClick={this.goToReg} value="Registration"/>
-						</div>
+						<input className="btn-registration" type="submit" value="Вход"/>
+						<span onClick={this.goToReg} >Registration</span>
 					</div>
 				</form>
 			</div>
