@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Header({user}) {
 	return(
@@ -9,10 +9,10 @@ export default function Header({user}) {
 					<div className="header__inner">
 						<div className="header__logo">Logo</div>
 						<nav className="nav">
-								<Link className="nav__link" to='/'>HOME</Link>
-								<Link className="nav__link" to="/about">About</Link>
-								<Link className="nav__link" to="/contact">CONTACT</Link>
-								<Link className="nav__link" to={user ? '/logout' : '/login'}>{user ? 'LOGOUT' : 'LOGIN'}</Link>								
+								<NavLink activeClassName="nav__active" className="nav__link" exact to='/'>HOME</NavLink>
+								<NavLink activeClassName="nav__active" className="nav__link" to="/about">About</NavLink>
+								<NavLink activeClassName="nav__active" className="nav__link" to="/contact">CONTACT</NavLink>
+								<NavLink activeClassName="nav__active" className="nav__link" to={user ? '/logout' : '/login'}>{user ? 'LOGOUT' : 'LOGIN'}</NavLink>								
 						</nav>
 					</div>
 				</div>
